@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://pho3hpq080xk"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_wnckf"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_wnckf")
+column_length = 10
+row_length = 20
+bombs = 5
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

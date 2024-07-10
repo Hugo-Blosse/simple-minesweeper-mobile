@@ -1,0 +1,163 @@
+[gd_scene load_steps=6 format=3 uid="uid://pho3hpq080xk"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_wnckf"]
+[ext_resource type="Texture2D" uid="uid://c6kwrp2hmmusf" path="res://bomb_mode.png" id="2_mwocp"]
+[ext_resource type="Texture2D" uid="uid://e6qf518mng54" path="res://hamburger.png" id="3_7pyg2"]
+[ext_resource type="Texture2D" uid="uid://dxxem3lc0y3ed" path="res://change_button.png" id="3_iayob"]
+[ext_resource type="Texture2D" uid="uid://cwor3yykqmmnp" path="res://background.png" id="5_q8q0k"]
+
+[node name="Main" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 230.0
+offset_bottom = 490.0
+script = ExtResource("1_wnckf")
+column_length = 10
+row_length = 20
+bombs = 15
+
+[node name="Control" type="Control" parent="."]
+process_mode = 1
+anchors_preset = 0
+offset_right = 193.0
+offset_bottom = 460.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 41.0
+offset_right = 73.0
+offset_bottom = 32.0
+texture = ExtResource("2_mwocp")
+
+[node name="TextureButton2" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("3_7pyg2")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "XDD"
+
+[node name="TextureButton" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 42.0
+offset_right = 74.0
+offset_bottom = 32.0
+texture_normal = ExtResource("3_iayob")
+
+[node name="Menu" type="Control" parent="."]
+process_mode = 2
+visible = false
+z_index = 1
+anchors_preset = 0
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 210.0
+offset_bottom = 470.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Menu"]
+process_mode = 2
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="Menu/CanvasLayer"]
+z_index = -2
+offset_right = 11.0
+offset_bottom = 24.0
+scale = Vector2(20, 20)
+size_flags_horizontal = 4
+texture = ExtResource("5_q8q0k")
+
+[node name="hamburger" type="TextureButton" parent="Menu/CanvasLayer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.5
+offset_top = 0.5
+offset_right = 5.5
+offset_bottom = -7.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+pivot_offset = Vector2(0.5, 0.5)
+texture_normal = ExtResource("3_7pyg2")
+
+[node name="ExitButton" type="Button" parent="Menu/CanvasLayer"]
+z_index = 2
+offset_left = 91.0
+offset_top = 331.0
+offset_right = 128.0
+offset_bottom = 362.0
+size_flags_horizontal = 4
+text = "Exit"
+
+[node name="SpinBox" type="SpinBox" parent="Menu/CanvasLayer"]
+process_mode = 2
+z_index = -2
+offset_left = 68.0
+offset_top = 231.0
+offset_right = 151.063
+offset_bottom = 262.0
+size_flags_horizontal = 4
+min_value = 1.0
+value = 15.0
+
+[node name="Label" type="Label" parent="Menu/CanvasLayer/SpinBox"]
+layout_mode = 2
+offset_top = -20.0
+offset_right = 54.0
+offset_bottom = 3.0
+text = "Bombs"
+
+[node name="Restart" type="Button" parent="Menu/CanvasLayer"]
+offset_left = 77.0
+offset_top = 120.0
+offset_right = 142.0
+offset_bottom = 151.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Restart
+"
+
+[node name="Label" type="Label" parent="Menu/CanvasLayer"]
+visible = false
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -27.5
+offset_right = 203.0
+offset_bottom = 27.5
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+text = "YOU LOST"
+
+[node name="TextureRect2" type="TextureRect" parent="Menu/CanvasLayer/Label"]
+z_index = -1
+offset_top = 80.0
+offset_right = 11.0
+offset_bottom = 104.0
+rotation = 4.71239
+scale = Vector2(8, 8)
+texture = ExtResource("5_q8q0k")
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 3
+one_shot = true
+
+[connection signal="pressed" from="Control/TextureButton2" to="." method="_on_texture_button_2_pressed"]
+[connection signal="pressed" from="Control/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Menu/CanvasLayer/TextureRect/hamburger" to="." method="_on_texture_button_2_pressed"]
+[connection signal="pressed" from="Menu/CanvasLayer/ExitButton" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Menu/CanvasLayer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

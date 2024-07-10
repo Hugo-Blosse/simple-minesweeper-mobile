@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctna0myuv40sy"]
+
+[ext_resource type="Script" path="res://Mine.gd" id="1_8bj8m"]
+[ext_resource type="Texture2D" uid="uid://drrjosjhx8g5g" path="res://empty.png" id="1_syg1l"]
+
+[node name="Field" type="TextureButton"]
+process_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1136.0
+offset_bottom = -632.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("1_syg1l")
+script = ExtResource("1_8bj8m")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
