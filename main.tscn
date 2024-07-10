@@ -144,6 +144,7 @@ text = "YOU LOST"
 
 [node name="TextureRect2" type="TextureRect" parent="Menu/CanvasLayer/Label"]
 z_index = -1
+layout_mode = 0
 offset_top = 80.0
 offset_right = 11.0
 offset_bottom = 104.0

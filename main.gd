@@ -67,7 +67,7 @@ func start() -> void:
 
 	for f in fields.values():
 		f.check_for_bombs()
-		if f.nearby_bombs_count != 0:
+		if f.nearby_bombs_count != 0 && f.option != "res://bomb.png":
 			fields_to_check += 1
 
 	size = Vector2(22 * column_length, 22 * row_length)
