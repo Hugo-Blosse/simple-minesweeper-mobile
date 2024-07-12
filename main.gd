@@ -41,29 +41,27 @@ func create_field(col_pos : int, row_pos : int) -> void:
 	var field = FieldBase.instantiate()
 	field.field_col_position = col_pos
 	field.field_row_position = row_pos
+	field_positions.append([col_pos, row_pos])
 	field.p = self
 	field.global_position = Vector2(20 * col_pos, 20 * row_pos + 50)
 	fields[[col_pos, row_pos]] = field
+	field.name = str(col_pos, " ", row_pos)
 	add_child(field)
 
 
 func start() -> void:
 	fields_to_check = 0
-	bombs = spin_box.value
+	bombs = int(spin_box.value)
 	var rng = RandomNumberGenerator.new()
 	for i in column_length:
 		for j in row_length:
 			create_field(i, j)
 
 	for bomb in bombs:
-		while true:
-			var col = rng.randi_range(0, column_length - 1)
-			var row = rng.randi_range(0, row_length - 1)
-			var bomb_position = [col, row]
-			if bomb_positions.find(bomb_position) == -1:
-				fields[[col, row]].has_bomb = true
-				bomb_positions.append(bomb_position)
-				break
+		var rand_field = field_positions[rng.randi_range(0, len(field_positions) - 1)]
+		fields[rand_field].has_bomb = true
+		bomb_positions.append(rand_field)
+		field_positions.erase(rand_field)
 
 	for f in fields.values():
 		f.check_for_bombs()
@@ -74,7 +72,6 @@ func start() -> void:
 	texture_rect.global_position = Vector2(column_length * 19 - 14, 10)
 	label.text = str(bombs)
 	label.global_position = Vector2(column_length * 10 - 8, 5)
-	print(fields_to_check)
 
 
 func change_label() -> void:
@@ -124,6 +121,7 @@ func _on_restart_pressed():
 	for child in get_children():
 		if child is Field:
 			child.queue_free()
+	field_positions.clear()
 	start()
 	_on_texture_button_2_pressed()
 
@@ -131,6 +129,5 @@ func _on_restart_pressed():
 func check_fields(field : Field):
 	if field.nearby_bombs_count != 0:
 		fields_to_check -= 1
-		print(fields_to_check)
 		if fields_to_check == 0:
 			game_end("YOU WIN")

@@ -1,5 +1,5 @@
 fc8a56933c4b1c8d796fdb8f7a9f9475
-::res://::1720641130
+::res://::1720748196
 1.png::CompressedTexture2D::1303121190403205058::1720565105::1720565353::1::::<><>::
 2.png::CompressedTexture2D::6897133221516955970::1720565075::1720565353::1::::<><>::
 3.png::CompressedTexture2D::3123903489909201981::1720565149::1720565353::1::::<><>::
@@ -14,13 +14,13 @@ bomb_mode.png::CompressedTexture2D::6970706259937599993::1720569195::1720569195:
 change_button.png::CompressedTexture2D::8821351928367255115::1720569195::1720569195::1::::<><>::
 empty.png::CompressedTexture2D::8388139228468067634::1720565390::1720565415::1::::<><>::
 empty_pressed.png::CompressedTexture2D::547317696979736097::1720565966::1720565980::1::::<><>::
-export_presets.cfg::TextFile::-1::1720620993::0::1::::<><>::
+export_presets.cfg::TextFile::-1::1720641454::0::1::::<><>::
 flag.png::CompressedTexture2D::7543400466942535620::1720565445::1720565451::1::::<><>::
 flag_mode.png::CompressedTexture2D::8817831823829933623::1720569195::1720569195::1::::<><>::
 hamburger.png::CompressedTexture2D::345733103163113593::1720608522::1720608526::1::::<><>::
 icon.png::CompressedTexture2D::2332855087335976562::1720608229::1720608231::1::::<><>::
 icon.svg::CompressedTexture2D::3100371276816545019::1720541304::1720541313::1::::<><>::
-main.gd::GDScript::-1::1720620801::0::1::::<>Control<>::
-main.tscn::PackedScene::1068183730574190932::1720620974::0::1::::<><>::res://main.gd<>uid://c6kwrp2hmmusf::::res://bomb_mode.png<>uid://e6qf518mng54::::res://hamburger.png<>uid://dxxem3lc0y3ed::::res://change_button.png<>uid://cwor3yykqmmnp::::res://background.png
+main.gd::GDScript::-1::1720641184::0::1::::<>Control<>::
+main.tscn::PackedScene::1068183730574190932::1720641188::0::1::::<><>::res://main.gd<>uid://c6kwrp2hmmusf::::res://bomb_mode.png<>uid://e6qf518mng54::::res://hamburger.png<>uid://dxxem3lc0y3ed::::res://change_button.png<>uid://cwor3yykqmmnp::::res://background.png
 Mine.gd::GDScript::-1::1720616335::0::1::::Field<>TextureButton<>::
-mine.tscn::PackedScene::6133311620452665496::1720620958::0::1::::<><>::res://Mine.gd<>uid://drrjosjhx8g5g::::res://empty.png
+mine.tscn::PackedScene::6133311620452665496::1720641188::0::1::::<><>::res://Mine.gd<>uid://drrjosjhx8g5g::::res://empty.png
