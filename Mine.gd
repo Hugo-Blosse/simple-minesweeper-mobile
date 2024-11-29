@@ -6,7 +6,7 @@ var field_col_position : int
 var field_row_position : int
 var nearby_bombs_count : int = 0
 var has_bomb : bool
-var p
+var p : MainGameDirector
 var option : String
 
 func check_for_bombs() -> void:
@@ -42,11 +42,16 @@ func check_for_bombs() -> void:
 		option = "res://empty_pressed.png"
 
 
-func _on_pressed():
-	if p.is_flag_mode_on:
+func _on_pressed() -> void:
+	if !p.has_started:
+		p.set_values([field_col_position, field_row_position])
+		p.has_started = true
+	if p.is_flag_mode_on: 
 		if texture_normal.resource_path == "res://flag.png":
 			change_bombs_display(1)
 			texture_normal = ResourceLoader.load("res://empty.png")
+			return
+		if texture_normal.resource_path != "res://empty.png":
 			return
 		if p.bombs != 0:
 			change_bombs_display(-1)
