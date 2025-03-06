@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://pho3hpq080xk"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_wnckf"]
-[ext_resource type="Texture2D" uid="uid://c6kwrp2hmmusf" path="res://bomb_mode.png" id="2_mwocp"]
-[ext_resource type="Texture2D" uid="uid://e6qf518mng54" path="res://hamburger.png" id="3_7pyg2"]
-[ext_resource type="Texture2D" uid="uid://dxxem3lc0y3ed" path="res://change_button.png" id="3_iayob"]
-[ext_resource type="Texture2D" uid="uid://cwor3yykqmmnp" path="res://background.png" id="5_q8q0k"]
+[ext_resource type="Texture2D" uid="uid://c6kwrp2hmmusf" path="res://art/bomb_mode.png" id="2_mwocp"]
+[ext_resource type="Texture2D" uid="uid://e6qf518mng54" path="res://art/hamburger.png" id="3_7pyg2"]
+[ext_resource type="Texture2D" uid="uid://dxxem3lc0y3ed" path="res://art/change_button.png" id="3_iayob"]
+[ext_resource type="Texture2D" uid="uid://cwor3yykqmmnp" path="res://art/background.png" id="5_q8q0k"]
 
 [node name="Main" type="Control"]
 process_mode = 3

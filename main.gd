@@ -51,11 +51,7 @@ func create_field(col_pos : int, row_pos : int) -> void:
 
 
 func set_values(pos : Array) -> void:
-	print(field_positions.size())
-	print(pos)
-	print(field_positions.find(pos))
 	field_positions.erase(pos)
-	print(field_positions.size())
 	var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 	for bomb in bombs:
 		var rand_field : Array = field_positions[rng.randi_range(0, len(field_positions) - 1)]
