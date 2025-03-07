@@ -32,7 +32,7 @@ func _ready() -> void:
 	$Menu/CanvasLayer/SpinBox.max_value = 199
 
 
-func get_field(col_pos : int, row_pos : int):
+func get_field(col_pos : int, row_pos : int) -> Field:
 	if row_pos < 0 || col_pos < 0 || col_pos > column_length - 1 || row_pos > row_length - 1:
 		return null
 	return fields[[col_pos, row_pos]]
@@ -63,7 +63,7 @@ func set_values(pos : Array) -> void:
 
 	for f in fields.values():
 		f.check_for_bombs()
-		if f.nearby_bombs_count != 0 && f.option != "res://bomb.png":
+		if f.nearby_bombs_count != 0 && f.option != "res://art/bomb.png":
 			fields_to_check += 1
 
 
@@ -84,22 +84,22 @@ func change_label() -> void:
 	label.text = str(bombs)
 
 
-func _on_texture_button_pressed():
-	if texture_rect.texture.resource_path == "res://bomb_mode.png":
-		texture_rect.texture = ResourceLoader.load("res://flag_mode.png")
+func _on_texture_button_pressed() -> void:
+	if texture_rect.texture.resource_path == "res://art/bomb_mode.png":
+		texture_rect.texture = ResourceLoader.load("res://art/flag_mode.png")
 		is_flag_mode_on = true
-	elif texture_rect.texture.resource_path == "res://flag_mode.png":
-		texture_rect.texture = ResourceLoader.load("res://bomb_mode.png")
+	else:
+		texture_rect.texture = ResourceLoader.load("res://art/bomb_mode.png")
 		is_flag_mode_on = false
 
 
-func _on_texture_button_2_pressed():
+func _on_texture_button_2_pressed() -> void:
 	menu.visible = !menu.visible
 	canvas_layer.visible = !canvas_layer.visible
 	get_tree().paused = !get_tree().paused
 
 
-func _on_quit_pressed():
+func _on_quit_pressed() -> void:
 	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
 
 
@@ -108,20 +108,20 @@ func _notification(what):
 		get_tree().quit()
 
 
-func game_end(end_text : String):
+func game_end(end_text : String) -> void:
 	game_end_label.text = end_text
 	game_end_label.visible = true
 	get_tree().paused = !get_tree().paused
 	timer.start()
 
 
-func _on_timer_timeout():
+func _on_timer_timeout() -> void:
 	get_tree().paused = !get_tree().paused
 	hamburger.disabled = true
 	_on_texture_button_2_pressed()
 
 
-func _on_restart_pressed():
+func _on_restart_pressed() -> void:
 	game_end_label.visible = false
 	hamburger.disabled = false
 	for child in get_children():
@@ -133,7 +133,7 @@ func _on_restart_pressed():
 	_on_texture_button_2_pressed()
 
 
-func check_fields(field : Field):
+func check_fields(field : Field) -> void:
 	if field.nearby_bombs_count != 0:
 		fields_to_check -= 1
 		if fields_to_check == 0:
